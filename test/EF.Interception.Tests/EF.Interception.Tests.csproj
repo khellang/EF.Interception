@@ -58,14 +58,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Book.cs" />
-    <Compile Include="InMemoryDbContext.cs" />
+    <Compile Include="TestObjects\Book.cs" />
+    <Compile Include="TestObjects\IEntity.cs" />
+    <Compile Include="TestObjects\InMemoryDbContext.cs" />
     <Compile Include="InterceptionDbContextTests.cs" />
+    <Compile Include="TestObjects\ISoftDeletedEntity.cs" />
     <Compile Include="SubscriberTests.cs" />
-    <Compile Include="AuditInterceptor.cs" />
-    <Compile Include="IAuditedEntity.cs" />
+    <Compile Include="TestObjects\AuditInterceptor.cs" />
+    <Compile Include="TestObjects\IAuditedEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="AuditedEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

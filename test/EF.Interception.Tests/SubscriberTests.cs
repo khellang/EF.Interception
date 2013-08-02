@@ -73,7 +73,7 @@ namespace EF.Interception.Tests
             {
                 // Arrange
                 var entityEntry = new Mock<IEntityEntry>();
-                entityEntry.SetupGet(x => x.Entity).Returns(new AuditedEntity { Id = 123 });
+                entityEntry.SetupGet(x => x.Entity).Returns(new Book { Id = 123 });
                 entityEntry.SetupGet(x => x.State).Returns(state);
 
                 var interceptor = new Mock<IInterceptor<IAuditedEntity>>(MockBehavior.Strict);
