@@ -32,22 +32,40 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Effort">
+      <HintPath>..\..\packages\Effort.1.0.0-beta4\lib\net45\Effort.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework">
       <HintPath>..\..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
+    <Reference Include="Moq">
+      <HintPath>..\..\packages\Moq.4.0.10827\lib\NET40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="NMemory">
+      <HintPath>..\..\packages\NMemory.1.0.0-beta7\lib\net45\NMemory.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Transactions" />
     <Reference Include="xunit">
       <HintPath>..\..\packages\xunit.1.9.1\lib\net20\xunit.dll</HintPath>
     </Reference>
+    <Reference Include="xunit.extensions">
+      <HintPath>..\..\packages\xunit.extensions.1.9.1\lib\net20\xunit.extensions.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="TimestampInterceptor.cs" />
-    <Compile Include="ITimestamped.cs" />
+    <Compile Include="Book.cs" />
+    <Compile Include="InMemoryDbContext.cs" />
+    <Compile Include="InterceptionDbContextTests.cs" />
+    <Compile Include="SubscriberTests.cs" />
+    <Compile Include="AuditInterceptor.cs" />
+    <Compile Include="IAuditedEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TestContext.cs" />
-    <Compile Include="Tests.cs" />
-    <Compile Include="TimestampedEntity.cs" />
+    <Compile Include="AuditedEntity.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
