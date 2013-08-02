@@ -1,9 +1,7 @@
 ﻿using System.Data;
-using System.Diagnostics;
 
 namespace EF.Interception
 {
-    [DebuggerDisplay("{Entity}: {State}")]
     internal class Context<T> : IContext<T> 
     {
         private readonly IEntityEntry _entry;

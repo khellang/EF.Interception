@@ -5,8 +5,6 @@ namespace EF.Interception
 {
     internal interface IEntityEntry
     {
-        EntityState OriginalState { get; }
-
         object Entity { get; }
 
         EntityState State { get; set; }

@@ -19,8 +19,8 @@ namespace EF.Interception
         {
             if (entityEntry.Entity is TEntity)
             {
-                var state = entityEntry.OriginalState;
-                var methods = _methods.Where(m => m.CanIntercept(state, isPostSave));
+                var methods = _methods.Where(m => 
+                    m.CanIntercept(entityEntry.State, isPostSave));
 
                 foreach (var method in methods)
                 {

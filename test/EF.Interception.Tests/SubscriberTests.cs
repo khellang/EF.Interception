@@ -71,16 +71,18 @@ namespace EF.Interception.Tests
                 bool isPostSave,
                 Expression<Action<IInterceptor<IAuditedEntity>>> expression = null)
             {
+                // Arrange
                 var entityEntry = new Mock<IEntityEntry>();
                 entityEntry.SetupGet(x => x.Entity).Returns(new AuditedEntity { Id = 123 });
                 entityEntry.SetupGet(x => x.State).Returns(state);
-                entityEntry.SetupGet(x => x.OriginalState).Returns(state);
 
                 var interceptor = new Mock<IInterceptor<IAuditedEntity>>(MockBehavior.Strict);
                 if (expression != null) interceptor.Setup(expression);
 
+                // Act
                 new Subscriber<IAuditedEntity>(interceptor.Object).Intercept(entityEntry.Object, isPostSave);
 
+                // Assert
                 interceptor.VerifyAll();
             }
         }

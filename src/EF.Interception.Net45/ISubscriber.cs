@@ -1,4 +1,6 @@
-﻿namespace EF.Interception
+﻿using System.Data.Entity.Infrastructure;
+
+namespace EF.Interception
 {
     internal interface ISubscriber
     {
