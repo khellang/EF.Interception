@@ -20,12 +20,11 @@ namespace EF.Interception
 
         protected InterceptionDbContext() { }
 
-        protected InterceptionDbContext(DbCompiledModel model) : base(model) { }
+        protected InterceptionDbContext(DbCompiledModel model) 
+            : base(model) { }
 
-        protected InterceptionDbContext(
-            DbConnection existingConnection,
-            DbCompiledModel model,
-            bool contextOwnsConnection) : base(existingConnection, model, contextOwnsConnection) { }
+        protected InterceptionDbContext(DbConnection existingConnection, DbCompiledModel model, bool contextOwnsConnection) 
+            : base(existingConnection, model, contextOwnsConnection) { }
 
         protected InterceptionDbContext(DbConnection existingConnection, bool contextOwnsConnection)
             : base(existingConnection, contextOwnsConnection) { }
@@ -33,7 +32,8 @@ namespace EF.Interception
         protected InterceptionDbContext(ObjectContext objectContext, bool dbContextOwnsObjectContext)
             : base(objectContext, dbContextOwnsObjectContext) { }
 
-        protected InterceptionDbContext(string nameOrConnectionString) : base(nameOrConnectionString) { }
+        protected InterceptionDbContext(string nameOrConnectionString) 
+            : base(nameOrConnectionString) { }
 
         protected InterceptionDbContext(string nameOrConnectionString, DbCompiledModel model)
             : base(nameOrConnectionString, model) { }
@@ -68,10 +68,7 @@ namespace EF.Interception
         {
             if (interceptor == null) throw new ArgumentNullException("interceptor");
 
-            lock (_lock)
-            {
-                _interceptors.Add(interceptor);
-            }
+            WhileLocked(() => _interceptors.Add(interceptor));
         }
 
         private static bool IsChanged(DbEntityEntry entry)
@@ -81,7 +78,7 @@ namespace EF.Interception
 
         private void Intercept(IList<EntityEntry> entityEntries, bool isPostSave)
         {
-            lock (_lock)
+            WhileLocked(() =>
             {
                 foreach (var interceptor in _interceptors)
                 {
@@ -90,7 +87,12 @@ namespace EF.Interception
                         interceptor.Intercept(entityEntry, isPostSave);
                     }
                 }
-            }
+            });
+        }
+
+        private void WhileLocked(Action action)
+        {
+            lock (_lock) { action(); }
         }
     }
 }
