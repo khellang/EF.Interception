@@ -8,7 +8,7 @@ using System.Linq;
 namespace EF.Interception
 {
     /// <summary>
-    /// DbContext with interception support.
+    /// A DbContext with support for intercepting entities before and after they're saved.
     /// </summary>
     public abstract class InterceptionDbContext : DbContext
     {
@@ -36,6 +36,11 @@ namespace EF.Interception
             return result;
         }
 
+        /// <summary>
+        /// Adds an interceptor to the context.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of entities to intercept.</typeparam>
+        /// <typeparam name="TInterceptor">The type of the interceptor.</typeparam>
         public void AddInterceptor<TEntity, TInterceptor>() 
             where TEntity : class
             where TInterceptor : IInterceptor<TEntity>, new()
@@ -43,6 +48,12 @@ namespace EF.Interception
             AddInterceptor(new TInterceptor());
         }
 
+        /// <summary>
+        /// Adds the given interceptor to the context.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of entities to intercept.</typeparam>
+        /// <param name="interceptor">The interceptor.</param>
+        /// <exception cref="System.ArgumentNullException">If the interceptor is <c>null</c></exception>
         public void AddInterceptor<TEntity>(IInterceptor<TEntity> interceptor) where TEntity : class
         {
             if (interceptor == null) throw new ArgumentNullException("interceptor");

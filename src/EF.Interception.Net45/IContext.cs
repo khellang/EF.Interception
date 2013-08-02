@@ -3,9 +3,9 @@
 namespace EF.Interception
 {
     /// <summary>
-    /// The context for an event.
+    /// The interception context.
     /// </summary>
-    /// <typeparam name="TEntity">The type of entity.</typeparam>
+    /// <typeparam name="TEntity">The type of entities to intercept.</typeparam>
     public interface IContext<out TEntity> : IHideObjectMembers
     {
         TEntity Entity { get; }
