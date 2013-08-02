@@ -74,13 +74,12 @@ namespace EF.Interception
 
         private IEnumerable<InterceptorMethod<TEntity>> GetInterceptorMethods()
         {
-            var interfaceType = typeof(IInterceptor<>)
-                .MakeGenericType(typeof(TEntity));
-
             var targetType = GetType();
 
-            return targetType.GetInterfaceMap(interfaceType)
-                .TargetMethods.Where(x => x.DeclaringType == targetType)
+            var interfaceType = typeof(IInterceptor<>).MakeGenericType(typeof(TEntity));
+
+            return targetType.GetInterfaceMap(interfaceType).TargetMethods
+                .Where(x => x.DeclaringType == targetType)
                 .Select(method => new InterceptorMethod<TEntity>(method));
         }
     }
