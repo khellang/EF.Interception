@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 
 namespace EF.Interception
@@ -21,36 +22,42 @@ namespace EF.Interception
         /// Called before the entity is inserted.
         /// </summary>
         /// <param name="context">The context.</param>
+        [InterceptorMethod(EntityState.Added, false)]
         public virtual void PreInsert(IContext<TEntity> context) { }
 
         /// <summary>
         /// Called before the entity is updated.
         /// </summary>
         /// <param name="context">The context.</param>
+        [InterceptorMethod(EntityState.Modified, false)]
         public virtual void PreUpdate(IContext<TEntity> context) { }
 
         /// <summary>
         /// Called before the entity is deleted.
         /// </summary>
         /// <param name="context">The context.</param>
+        [InterceptorMethod(EntityState.Deleted, false)]
         public virtual void PreDelete(IContext<TEntity> context) { }
 
         /// <summary>
         /// Called after the entity is inserted.
         /// </summary>
         /// <param name="context">The context.</param>
+        [InterceptorMethod(EntityState.Added, true)]
         public virtual void PostInsert(IContext<TEntity> context) { }
 
         /// <summary>
         /// Called after the entity is updated.
         /// </summary>
         /// <param name="context">The context.</param>
+        [InterceptorMethod(EntityState.Modified, true)]
         public virtual void PostUpdate(IContext<TEntity> context) { }
 
         /// <summary>
         /// Called after the entity is deleted.
         /// </summary>
         /// <param name="context">The context.</param>
+        [InterceptorMethod(EntityState.Deleted, true)]
         public virtual void PostDelete(IContext<TEntity> context) { }
 
         public void Intercept(IEntityEntry entityEntry, bool isPostSave)
@@ -65,12 +72,16 @@ namespace EF.Interception
             }
         }
 
-        private static IEnumerable<InterceptorMethod<TEntity>> GetInterceptorMethods()
+        private IEnumerable<InterceptorMethod<TEntity>> GetInterceptorMethods()
         {
-            return typeof(IInterceptor<>)
-                .MakeGenericType(typeof(TEntity))
-                .GetMethods()
-                .Select(x => new InterceptorMethod<TEntity>(x));
+            var interfaceType = typeof(IInterceptor<>)
+                .MakeGenericType(typeof(TEntity));
+
+            var targetType = GetType();
+
+            return targetType.GetInterfaceMap(interfaceType)
+                .TargetMethods.Where(x => x.DeclaringType == targetType)
+                .Select(method => new InterceptorMethod<TEntity>(method));
         }
     }
 }
