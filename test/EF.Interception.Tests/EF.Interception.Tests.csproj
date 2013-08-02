@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestObjects\MockInterceptor.cs" />
     <Compile Include="TestObjects\Book.cs" />
     <Compile Include="TestObjects\IEntity.cs" />
     <Compile Include="TestObjects\InMemoryDbContext.cs" />

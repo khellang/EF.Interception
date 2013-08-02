@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Data.Entity.Validation;
+
+using Xunit;
 
 namespace EF.Interception.Tests
 {
@@ -13,7 +16,22 @@ namespace EF.Interception.Tests
                 _context = new InMemoryDbContext();
             }
 
-            // TODO: Test InterceptionDbContext here...
+            [Fact]
+            public void ShouldThrowOnInvalidEntities()
+            {
+                _context.Books.Add(new Book { Name = "Harry Potter and the Philosopher's Stone" });
+                
+                Assert.Throws<DbEntityValidationException>(() => _context.SaveChanges());
+            }
+
+            [Fact]
+            public void ShouldNotThrowOnInvalidEntitiesWhenInterceptorSetsRequiredFields()
+            {
+                _context.AddInterceptor(new AuditInterceptor());
+                _context.Books.Add(new Book { Name = "Harry Potter and the Chamber of Secrets" });
+                
+                Assert.DoesNotThrow(() => _context.SaveChanges());
+            }
 
             public void Dispose()
             {

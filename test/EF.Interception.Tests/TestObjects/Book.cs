@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace EF.Interception.Tests
 {
-    public class Book : IAuditedEntity
+    public class Book : IAuditedEntity, ISoftDeletedEntity
     {
         public int Id { get; set; }
 
@@ -15,5 +15,7 @@ namespace EF.Interception.Tests
 
         [Required]
         public DateTime? ModifiedAt { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }
