@@ -55,6 +55,9 @@
     <Compile Include="..\EF.Interception.Net45\IContext.cs">
       <Link>IContext.cs</Link>
     </Compile>
+    <Compile Include="..\EF.Interception.Net45\IEntityEntry.cs">
+      <Link>IEntityEntry.cs</Link>
+    </Compile>
     <Compile Include="..\EF.Interception.Net45\IHideObjectMembers.cs">
       <Link>IHideObjectMembers.cs</Link>
     </Compile>
@@ -76,8 +79,14 @@
     <Compile Include="..\EF.Interception.Net45\ISubscriber.cs">
       <Link>ISubscriber.cs</Link>
     </Compile>
+    <Compile Include="..\EF.Interception.Net45\IValidationResult.cs">
+      <Link>IValidationResult.cs</Link>
+    </Compile>
     <Compile Include="..\EF.Interception.Net45\Subscriber.cs">
       <Link>Subscriber.cs</Link>
+    </Compile>
+    <Compile Include="..\EF.Interception.Net45\ValidationResult.cs">
+      <Link>ValidationResult.cs</Link>
     </Compile>
     <Compile Include="CustomAttributeExtensions.cs" />
   </ItemGroup>

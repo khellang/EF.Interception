@@ -1,4 +1,5 @@
-﻿using System.Data;
+﻿using System.Collections;
+using System.Data;
 
 namespace EF.Interception
 {
@@ -19,5 +20,11 @@ namespace EF.Interception
         /// </summary>
         /// <value>The state.</value>
         EntityState State { get; set; }
+
+        /// <summary>
+        /// Gets the validation result.
+        /// </summary>
+        /// <value>The validation result.</value>
+        IValidationResult ValidationResult { get; }
     }
 }

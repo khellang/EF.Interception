@@ -1,11 +1,12 @@
 ﻿using System.Data;
 using System.Data.Entity.Infrastructure;
+using System.Data.Entity.Validation;
 using System.Diagnostics;
 
 namespace EF.Interception
 {
     [DebuggerDisplay("{Entity}: {State}")]
-    internal class EntityEntry
+    internal class EntityEntry : IEntityEntry
     {
         private readonly DbEntityEntry _entry;
 
@@ -26,6 +27,11 @@ namespace EF.Interception
         {
             get { return _entry.State; }
             set { _entry.State = value; }
+        }
+
+        public DbEntityValidationResult GetValidationResult()
+        {
+            return _entry.GetValidationResult();
         }
     }
 }

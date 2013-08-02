@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Data.Common;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
+using System.Data.Objects;
 using System.Linq;
 
 namespace EF.Interception
@@ -15,6 +17,26 @@ namespace EF.Interception
         private readonly List<ISubscriber> _subscribers = new List<ISubscriber>();
 
         private readonly object _lock = new object();
+
+        protected InterceptionDbContext() { }
+
+        protected InterceptionDbContext(DbCompiledModel model) : base(model) { }
+
+        protected InterceptionDbContext(
+            DbConnection existingConnection,
+            DbCompiledModel model,
+            bool contextOwnsConnection) : base(existingConnection, model, contextOwnsConnection) { }
+
+        protected InterceptionDbContext(DbConnection existingConnection, bool contextOwnsConnection)
+            : base(existingConnection, contextOwnsConnection) { }
+
+        protected InterceptionDbContext(ObjectContext objectContext, bool dbContextOwnsObjectContext)
+            : base(objectContext, dbContextOwnsObjectContext) { }
+
+        protected InterceptionDbContext(string nameOrConnectionString) : base(nameOrConnectionString) { }
+
+        protected InterceptionDbContext(string nameOrConnectionString, DbCompiledModel model)
+            : base(nameOrConnectionString, model) { }
 
         /// <summary>
         /// Saves all changes made in this context to the underlying database.

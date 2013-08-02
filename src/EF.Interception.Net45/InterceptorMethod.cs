@@ -34,7 +34,7 @@ namespace EF.Interception
             return _state == state && _isAfterSave == isPostSave;
         }
 
-        public void Invoke(IInterceptor<TEntity> target, EntityEntry entityEntry)
+        public void Invoke(IInterceptor<TEntity> target, IEntityEntry entityEntry)
         {
             _method.Invoke(target, new[] { Activator.CreateInstance(_contextType, entityEntry) });
         }

@@ -50,6 +50,7 @@
       <Link>Properties\AssemblyInfo.cs</Link>
     </Compile>
     <Compile Include="EntityEntry.cs" />
+    <Compile Include="IEntityEntry.cs" />
     <Compile Include="IHideObjectMembers.cs" />
     <Compile Include="IContext.cs" />
     <Compile Include="InterceptionDbContext.cs" />
@@ -58,8 +59,10 @@
     <Compile Include="Interceptor.cs" />
     <Compile Include="InterceptorMethodAttribute.cs" />
     <Compile Include="ISubscriber.cs" />
+    <Compile Include="IValidationResult.cs" />
     <Compile Include="Subscriber.cs" />
     <Compile Include="InterceptorMethod.cs" />
+    <Compile Include="ValidationResult.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

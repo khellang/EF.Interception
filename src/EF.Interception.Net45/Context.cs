@@ -6,9 +6,9 @@ namespace EF.Interception
     [DebuggerDisplay("{Entity}: {State}")]
     internal class Context<T> : IContext<T> 
     {
-        private readonly EntityEntry _entry;
+        private readonly IEntityEntry _entry;
 
-        public Context(EntityEntry entry)
+        public Context(IEntityEntry entry)
         {
             _entry = entry;
         }
@@ -22,6 +22,11 @@ namespace EF.Interception
         {
             get { return _entry.State; }
             set { _entry.State = value; }
+        }
+
+        public IValidationResult ValidationResult
+        {
+            get { return new ValidationResult(_entry.GetValidationResult()); }
         }
     }
 }

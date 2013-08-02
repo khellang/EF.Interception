@@ -2,6 +2,6 @@
 {
     internal interface ISubscriber
     {
-        void Intercept(EntityEntry entityEntry, bool isPostSave);
+        void Intercept(IEntityEntry entityEntry, bool isPostSave);
     }
 }

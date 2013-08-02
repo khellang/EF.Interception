@@ -15,7 +15,7 @@ namespace EF.Interception
             _methods = GetInterceptorMethods();
         }
 
-        public void Intercept(EntityEntry entityEntry, bool isPostSave)
+        public void Intercept(IEntityEntry entityEntry, bool isPostSave)
         {
             if (entityEntry.Entity is TEntity)
             {
