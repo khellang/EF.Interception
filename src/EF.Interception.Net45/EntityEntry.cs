@@ -24,9 +24,9 @@ namespace EF.Interception
             set { _entry.State = value; }
         }
 
-        public DbEntityValidationResult GetValidationResult()
+        public DbEntityValidationResult ValidationResult
         {
-            return _entry.GetValidationResult();
+            get { return _entry.GetValidationResult(); }
         }
     }
 }

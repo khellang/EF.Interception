@@ -76,14 +76,8 @@
     <Compile Include="..\EF.Interception.Net45\InterceptorMethodAttribute.cs">
       <Link>InterceptorMethodAttribute.cs</Link>
     </Compile>
-    <Compile Include="..\EF.Interception.Net45\ISubscriber.cs">
-      <Link>ISubscriber.cs</Link>
-    </Compile>
     <Compile Include="..\EF.Interception.Net45\IValidationResult.cs">
       <Link>IValidationResult.cs</Link>
-    </Compile>
-    <Compile Include="..\EF.Interception.Net45\Subscriber.cs">
-      <Link>Subscriber.cs</Link>
     </Compile>
     <Compile Include="..\EF.Interception.Net45\ValidationResult.cs">
       <Link>ValidationResult.cs</Link>

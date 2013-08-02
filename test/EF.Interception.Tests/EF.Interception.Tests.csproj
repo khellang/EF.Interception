@@ -63,7 +63,7 @@
     <Compile Include="TestObjects\InMemoryDbContext.cs" />
     <Compile Include="InterceptionDbContextTests.cs" />
     <Compile Include="TestObjects\ISoftDeletedEntity.cs" />
-    <Compile Include="SubscriberTests.cs" />
+    <Compile Include="InterceptorTests.cs" />
     <Compile Include="TestObjects\AuditInterceptor.cs" />
     <Compile Include="TestObjects\IAuditedEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

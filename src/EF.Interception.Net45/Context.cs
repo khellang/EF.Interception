@@ -24,7 +24,7 @@ namespace EF.Interception
 
         public IValidationResult ValidationResult
         {
-            get { return new ValidationResult(_entry.GetValidationResult()); }
+            get { return new ValidationResult(_entry.ValidationResult); }
         }
     }
 }
