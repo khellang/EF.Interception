@@ -45,14 +45,14 @@ public class MyDbContext : InterceptionDbContext
 ```
 
 `Interceptor<T>` has six methods you can override:
- - PreInsert
- - PreUpdate
- - PreDelete
- - PostInsert
- - PostUpdate
- - PostDelete
+ - `PreInsert`
+ - `PreUpdate`
+ - `PreDelete`
+ - `PostInsert`
+ - `PostUpdate`
+ - `PostDelete`
 
 All methods takes an `IContext<T>` which has three properties:
- - Entity - The entity which is intercepted.
- - State - The entity's current state. This can be altered.
- - ValidationResult - The entity's validation result.
+ - `Entity` - The entity which is intercepted.
+ - `State` - The entity's current state. This can be altered.
+ - `ValidationResult` - The entity's validation result.
