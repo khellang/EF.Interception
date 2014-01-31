@@ -1,4 +1,4 @@
-# EF.Interception <a href="http://ci.hellang.com/viewType.html?buildTypeId=EF_INTERCEPT_Master&tab=buildTypeStatusDiv&guest=1"><img src="http://ci.hellang.com/app/rest/builds/buildType:(id:EF_INTERCEPT_Master)/statusIcon"/></a>
+# EF.Interception
 
 
 EF.Interception is small library that lets you intercept saving of entities in Entity Framework 5.
