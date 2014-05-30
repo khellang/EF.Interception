@@ -1,6 +1,4 @@
-# EF.Interception 
-
-[![Build status](https://ci.appveyor.com/api/projects/status/701q9uw8kker5kqx)](https://ci.appveyor.com/project/khellang/ef-interception)
+# EF.Interception [![Build status](https://ci.appveyor.com/api/projects/status/701q9uw8kker5kqx)](https://ci.appveyor.com/project/khellang/ef-interception)
 
 EF.Interception is small library that lets you intercept saving of entities in Entity Framework 5.
 
