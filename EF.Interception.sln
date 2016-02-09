@@ -1,18 +1,21 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF.Interception.Net45", "src\EF.Interception.Net45\EF.Interception.Net45.csproj", "{AD3867F4-1152-4EDC-967C-40D96370ED79}"
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{905E3683-12E8-47D5-AF85-C030A9C622C8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF.Interception.Tests", "test\EF.Interception.Tests\EF.Interception.Tests.csproj", "{D0FF84F4-4021-4435-A23A-12EEEF8D2D75}"
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EF.Interception", "src\EF.Interception\EF.Interception.xproj", "{CA797BD5-418F-4487-BF74-FF4D3DEB63AD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EF.Interception.Net40", "src\EF.Interception.Net40\EF.Interception.Net40.csproj", "{DE7C0057-AE28-4A1D-B89E-E00099FEF663}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{A38E5873-893F-4AC7-A494-A93483584A87}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{535D10A9-15FF-46EF-97E7-46E92FBC7C87}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{29382C99-3E61-4294-9627-2D577A6353C2}"
 	ProjectSection(SolutionItems) = preProject
-		.nuget\NuGet.Config = .nuget\NuGet.Config
-		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
+		global.json = global.json
+		NuGet.config = NuGet.config
 	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "EF.Interception.Tests", "test\EF.Interception.Tests\EF.Interception.Tests.xproj", "{06B64112-B93B-4964-B81F-7F508011CA6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -20,20 +23,20 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{AD3867F4-1152-4EDC-967C-40D96370ED79}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AD3867F4-1152-4EDC-967C-40D96370ED79}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AD3867F4-1152-4EDC-967C-40D96370ED79}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AD3867F4-1152-4EDC-967C-40D96370ED79}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D0FF84F4-4021-4435-A23A-12EEEF8D2D75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0FF84F4-4021-4435-A23A-12EEEF8D2D75}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0FF84F4-4021-4435-A23A-12EEEF8D2D75}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0FF84F4-4021-4435-A23A-12EEEF8D2D75}.Release|Any CPU.Build.0 = Release|Any CPU
-		{DE7C0057-AE28-4A1D-B89E-E00099FEF663}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{DE7C0057-AE28-4A1D-B89E-E00099FEF663}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE7C0057-AE28-4A1D-B89E-E00099FEF663}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{DE7C0057-AE28-4A1D-B89E-E00099FEF663}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA797BD5-418F-4487-BF74-FF4D3DEB63AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA797BD5-418F-4487-BF74-FF4D3DEB63AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA797BD5-418F-4487-BF74-FF4D3DEB63AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA797BD5-418F-4487-BF74-FF4D3DEB63AD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06B64112-B93B-4964-B81F-7F508011CA6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06B64112-B93B-4964-B81F-7F508011CA6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06B64112-B93B-4964-B81F-7F508011CA6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06B64112-B93B-4964-B81F-7F508011CA6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{CA797BD5-418F-4487-BF74-FF4D3DEB63AD} = {905E3683-12E8-47D5-AF85-C030A9C622C8}
+		{06B64112-B93B-4964-B81F-7F508011CA6E} = {A38E5873-893F-4AC7-A494-A93483584A87}
 	EndGlobalSection
 EndGlobal

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Data;
+using System.Data.Entity;
 using System.Linq.Expressions;
-
 using Moq;
-
 using Xunit;
 
 namespace EF.Interception.Tests

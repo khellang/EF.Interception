@@ -29,8 +29,8 @@ namespace EF.Interception.Tests
             {
                 _context.AddInterceptor(new AuditInterceptor());
                 _context.Books.Add(new Book { Name = "Harry Potter and the Chamber of Secrets" });
-                
-                Assert.DoesNotThrow(() => _context.SaveChanges());
+
+                _context.SaveChanges();
             }
 
             [Fact]

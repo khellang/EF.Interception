@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
+using System.Data.Entity;
 using System.Linq;
 
 namespace EF.Interception
@@ -62,9 +62,15 @@ namespace EF.Interception
 
         public void Intercept(IEntityEntry entityEntry, bool isPostSave)
         {
-            if (entityEntry == null) throw new ArgumentNullException("entityEntry");
+            if (entityEntry == null)
+            {
+                throw new ArgumentNullException(nameof(entityEntry));
+            }
 
-            if (!(entityEntry.Entity is TEntity)) return;
+            if (!(entityEntry.Entity is TEntity))
+            {
+                return;
+            }
 
             foreach (var method in _methods.Where(m => m.CanIntercept(entityEntry.BeforeState, isPostSave)))
             {

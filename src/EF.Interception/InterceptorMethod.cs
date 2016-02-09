@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Data;
+using System.Data.Entity;
 using System.Reflection;
 
 namespace EF.Interception

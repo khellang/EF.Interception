@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Data.Common;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
-using System.Data.Objects;
 using System.Linq;
 
 namespace EF.Interception
@@ -20,23 +19,29 @@ namespace EF.Interception
 
         protected InterceptionDbContext() { }
 
-        protected InterceptionDbContext(DbCompiledModel model) 
-            : base(model) { }
+        protected InterceptionDbContext(DbCompiledModel model)
+            : base(model)
+        { }
 
-        protected InterceptionDbContext(DbConnection existingConnection, DbCompiledModel model, bool contextOwnsConnection) 
-            : base(existingConnection, model, contextOwnsConnection) { }
+        protected InterceptionDbContext(DbConnection existingConnection, DbCompiledModel model, bool contextOwnsConnection)
+            : base(existingConnection, model, contextOwnsConnection)
+        { }
 
         protected InterceptionDbContext(DbConnection existingConnection, bool contextOwnsConnection)
-            : base(existingConnection, contextOwnsConnection) { }
+            : base(existingConnection, contextOwnsConnection)
+        { }
 
         protected InterceptionDbContext(ObjectContext objectContext, bool dbContextOwnsObjectContext)
-            : base(objectContext, dbContextOwnsObjectContext) { }
+            : base(objectContext, dbContextOwnsObjectContext)
+        { }
 
-        protected InterceptionDbContext(string nameOrConnectionString) 
-            : base(nameOrConnectionString) { }
+        protected InterceptionDbContext(string nameOrConnectionString)
+            : base(nameOrConnectionString)
+        { }
 
         protected InterceptionDbContext(string nameOrConnectionString, DbCompiledModel model)
-            : base(nameOrConnectionString, model) { }
+            : base(nameOrConnectionString, model)
+        { }
 
         /// <summary>
         /// Saves all changes made in this context to the underlying database.
@@ -66,9 +71,15 @@ namespace EF.Interception
         /// <exception cref="System.ArgumentNullException">If the interceptor is <c>null</c></exception>
         public void AddInterceptor<TEntity>(Interceptor<TEntity> interceptor) where TEntity : class
         {
-            if (interceptor == null) throw new ArgumentNullException("interceptor");
+            if (interceptor == null)
+            {
+                throw new ArgumentNullException(nameof(interceptor));
+            }
 
-            WhileLocked(() => _interceptors.Add(interceptor));
+            lock (_lock)
+            {
+                _interceptors.Add(interceptor);
+            }
         }
 
         private static bool IsChanged(DbEntityEntry entry)
@@ -78,7 +89,7 @@ namespace EF.Interception
 
         private void Intercept(IList<EntityEntry> entityEntries, bool isPostSave)
         {
-            WhileLocked(() =>
+            lock (_lock)
             {
                 foreach (var interceptor in _interceptors)
                 {
@@ -87,12 +98,7 @@ namespace EF.Interception
                         interceptor.Intercept(entityEntry, isPostSave);
                     }
                 }
-            });
-        }
-
-        private void WhileLocked(Action action)
-        {
-            lock (_lock) { action(); }
+            }
         }
     }
 }

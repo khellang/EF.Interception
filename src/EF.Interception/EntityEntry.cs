@@ -1,4 +1,4 @@
-﻿using System.Data;
+﻿using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Validation;
 
@@ -8,7 +8,7 @@ namespace EF.Interception
     {
         private readonly DbEntityEntry _entry;
 
-        private EntityState _beforeState;
+        private readonly EntityState _beforeState;
 
         public EntityEntry(DbEntityEntry entry, EntityState beforeState)
         {
