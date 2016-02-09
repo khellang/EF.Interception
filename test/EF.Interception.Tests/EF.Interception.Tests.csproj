@@ -58,6 +58,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestObjects\IPostExecutedEntity.cs" />
     <Compile Include="TestObjects\MockInterceptor.cs" />
     <Compile Include="TestObjects\Book.cs" />
     <Compile Include="TestObjects\IEntity.cs" />
@@ -68,6 +69,7 @@
     <Compile Include="TestObjects\AuditInterceptor.cs" />
     <Compile Include="TestObjects\IAuditedEntity.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestObjects\PostExecuteInterceptor.cs" />
     <Compile Include="TestObjects\SoftDeleteInterceptor.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -57,6 +57,24 @@ namespace EF.Interception.Tests
                 Assert.True(book.IsDeleted);
             }
 
+            [Fact]
+            public void ShouldExecutePostMethodWhenEntityIsAdded()
+            {
+                _context.AddInterceptor(new PostExecuteInterceptor());
+
+                var book = new Book
+                {
+                    Name = "Harry Potter and the Globet of Fire",
+                    CreatedAt = DateTime.Now, // Need these for validation...
+                    ModifiedAt = DateTime.Now
+                };
+
+                _context.Books.Add(book);
+                _context.SaveChanges();
+
+                Assert.True(book.IsPostExecuted);
+            }
+
             public void Dispose()
             {
                 _context.Dispose();
