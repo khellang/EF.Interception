@@ -8,9 +8,12 @@ namespace EF.Interception
     {
         private readonly DbEntityEntry _entry;
 
-        public EntityEntry(DbEntityEntry entry)
+        private EntityState _beforeState;
+
+        public EntityEntry(DbEntityEntry entry, EntityState beforeState)
         {
             _entry = entry;
+            _beforeState = beforeState;
         }
 
         public object Entity
@@ -22,6 +25,11 @@ namespace EF.Interception
         {
             get { return _entry.State; }
             set { _entry.State = value; }
+        }
+
+        public EntityState BeforeState
+        {
+            get { return _beforeState; }
         }
 
         public DbEntityValidationResult ValidationResult

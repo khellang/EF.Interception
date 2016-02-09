@@ -66,7 +66,7 @@ namespace EF.Interception
 
             if (!(entityEntry.Entity is TEntity)) return;
 
-            foreach (var method in _methods.Where(m => m.CanIntercept(entityEntry.State, isPostSave)))
+            foreach (var method in _methods.Where(m => m.CanIntercept(entityEntry.BeforeState, isPostSave)))
             {
                 method.Invoke(this, entityEntry);
             }
