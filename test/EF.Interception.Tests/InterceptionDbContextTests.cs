@@ -64,7 +64,7 @@ namespace EF.Interception.Tests
 
                 var book = new Book
                 {
-                    Name = "Harry Potter and the Globet of Fire",
+                    Name = "Harry Potter and the Goblet of Fire",
                     CreatedAt = DateTime.Now, // Need these for validation...
                     ModifiedAt = DateTime.Now
                 };
