@@ -6,35 +6,24 @@ namespace EF.Interception
 {
     internal class EntityEntry : IEntityEntry
     {
-        private readonly DbEntityEntry _entry;
-
-        private readonly EntityState _beforeState;
-
         public EntityEntry(DbEntityEntry entry, EntityState beforeState)
         {
-            _entry = entry;
-            _beforeState = beforeState;
+            Entry = entry;
+            BeforeState = beforeState;
         }
 
-        public object Entity
-        {
-            get { return _entry.Entity; }
-        }
+        private DbEntityEntry Entry { get; }
+
+        public EntityState BeforeState { get; }
+
+        public object Entity => Entry.Entity;
+
+        public DbEntityValidationResult ValidationResult => Entry.GetValidationResult();
 
         public EntityState State
         {
-            get { return _entry.State; }
-            set { _entry.State = value; }
-        }
-
-        public EntityState BeforeState
-        {
-            get { return _beforeState; }
-        }
-
-        public DbEntityValidationResult ValidationResult
-        {
-            get { return _entry.GetValidationResult(); }
+            get { return Entry.State; }
+            set { Entry.State = value; }
         }
     }
 }

@@ -5,6 +5,8 @@ using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace EF.Interception
 {
@@ -57,6 +59,22 @@ namespace EF.Interception
             Intercept(modifiedEntries, false);
 
             var result = base.SaveChanges();
+
+            Intercept(modifiedEntries, true);
+
+            return result;
+        }
+
+        public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken)
+        {
+            var modifiedEntries = ChangeTracker.Entries()
+                .Where(IsChanged)
+                .Select(entry => new EntityEntry(entry, entry.State))
+                .ToList();
+
+            Intercept(modifiedEntries, false);
+
+            var result = await base.SaveChangesAsync(cancellationToken);
 
             Intercept(modifiedEntries, true);
 

@@ -5,21 +5,15 @@ namespace EF.Interception
 {
     internal class ValidationResult : IValidationResult
     {
-        private readonly DbEntityValidationResult _result;
-
         public ValidationResult(DbEntityValidationResult result)
         {
-            _result = result;
+            Result = result;
         }
 
-        public IEnumerable<DbValidationError> Errors
-        {
-            get { return _result.ValidationErrors; }
-        }
+        private DbEntityValidationResult Result { get; }
 
-        public bool IsValid
-        {
-            get { return _result.IsValid; }
-        }
+        public IEnumerable<DbValidationError> Errors => Result.ValidationErrors;
+
+        public bool IsValid => Result.IsValid;
     }
 }
