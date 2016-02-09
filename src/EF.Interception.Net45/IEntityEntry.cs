@@ -21,6 +21,11 @@ namespace EF.Interception
         EntityState State { get; set; }
 
         /// <summary>
+        /// Gets the entity's state before saving changes in context.
+        /// </summary>
+        EntityState BeforeState { get; }
+
+        /// <summary>
         /// Gets the entity's validation result.
         /// </summary>
         /// <value>The entity's validation result.</value>

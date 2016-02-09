@@ -46,7 +46,7 @@ namespace EF.Interception
         {
             var modifiedEntries = ChangeTracker.Entries()
                 .Where(IsChanged)
-                .Select(entry => new EntityEntry(entry))
+                .Select(entry => new EntityEntry(entry, entry.State))
                 .ToList();
 
             Intercept(modifiedEntries, false);
