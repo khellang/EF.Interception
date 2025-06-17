@@ -55,3 +55,11 @@ All methods takes an `IContext<T>` which has three properties:
  - `Entity` - The entity which is intercepted.
  - `State` - The entity's current state. This can be altered.
  - `ValidationResult` - The entity's validation result.
+
+## Sponsors
+
+[Entity Framework Extensions](https://entityframework-extensions.net/?utm_source=khellang&utm_medium=EF.Interception) and [Dapper Plus](https://dapper-plus.net/?utm_source=khellang&utm_medium=EF.Interception) are major sponsors and proud to contribute to the development of EF.Interception.
+
+[![Entity Framework Extensions](https://raw.githubusercontent.com/khellang/khellang/refs/heads/master/.github/entity-framework-extensions-sponsor.png)](https://entityframework-extensions.net/bulk-insert?utm_source=khellang&utm_medium=EF.Interception)
+
+[![Dapper Plus](https://raw.githubusercontent.com/khellang/khellang/refs/heads/master/.github/dapper-plus-sponsor.png)](https://dapper-plus.net/bulk-insert?utm_source=khellang&utm_medium=EF.Interception)
